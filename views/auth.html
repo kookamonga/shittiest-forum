@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silica Auth</title>
+  <link rel="icon" type="image/x-icon" href="icon.ico">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/main.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Silica</h1>
+    <p style="text-align: center; color: var(--primary-gray); margin-bottom: 20px; font-size: 11px; text-transform: uppercase;">
+      A decentralized, open-source, and self-hosted social-media platform, as anti-social-media as it can be.
+    </p>
+    
+    <div class="auth-container" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+      <!-- Login Section -->
+      <div class="auth-section" style="flex: 1; min-width: 300px; max-width: 400px;">
+        <h3>AUTHENTICATE YOURSELF</h3>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="privateKey">PRIVATE KEY</label>
+            <input 
+              type="text" 
+              id="privateKey" 
+              name="privateKey" 
+              placeholder="Enter your private key" 
+              title="Enter your private key (e.g., base64url string)"
+              required
+            >
+          </div>
+          <button type="submit" class="btn">LOGIN</button>
+        </form>
+      </div>
+
+      <!-- Generate New Account Section -->
+      <div class="auth-section" style="flex: 1; min-width: 300px; max-width: 400px;">
+        <h3>CREATE NEW ACCOUNT</h3>
+        <form id="generate-form">
+          <div class="form-group">
+            <label for="moniker">MONIKER (DISPLAY NAME)</label>
+            <input 
+              type="text" 
+              id="moniker" 
+              name="moniker" 
+              placeholder="Choose a display name" 
+              maxlength="20"
+              title="Your display name (can be shared)"
+              required
+            >
+          </div>
+          <button type="submit" class="btn btn-secondary">GENERATE KEYS</button>
+        </form>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px; font-size: 10px; color: var(--primary-gray); text-transform: uppercase;">
+      <p>YOUR PRIVATE KEY IS YOUR PASSWORD - KEEP IT SECURE! WE DO NOT STORE IT AT HOME! I CANNOT STRESS THIS ENOUGH!</p>
+      <p>PUBLIC KEY AND MONIKER ARE VISIBLE ON POSTS</p>
+    </div>
+  </div>
+</body>
+</html>
