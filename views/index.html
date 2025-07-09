@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silica - Board</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+  <script src="/js/main.js" defer></script>
+  <!-- MathJax for LaTeX support -->
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <!-- Three.js for 3D model rendering -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="user-bar">
+      <div class="user-bar-left">
+        <div id="user-info"></div>
+      </div>
+      <div class="user-bar-right">
+        <div class="theme-picker">
+          <button class="theme-picker-btn btn btn-danger btn-small">Theme</button>
+          <div class="theme-dropdown">
+            <div class="theme-option" data-theme="light">Desert Dune</div>
+            <div class="theme-option" data-theme="dark">Bedouin Brown</div>
+            <div class="theme-option" data-theme="cerulean">Commodore Cerulean</div>
+            <div class="theme-option" data-theme="azure">Abyssal Azure</div>
+          </div>
+        </div>
+        <div class="settings">
+          <label for="posts-per-page">Posts/page:</label>
+          <select id="posts-per-page" class="btn btn-small">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50" selected>50</option>
+            <option value="100">100</option>
+          </select>
+        </div>
+        <button id="logout-btn" class="btn btn-danger btn-small">Logout</button>
+      </div>
+    </div>
+    <div class="post-form">
+      <form id="post-form">
+        <div class="form-group">
+          <textarea name="content" placeholder="What's on your mind? (Markdown and LaTeX supported)" required></textarea>
+        </div>
+        
+        <div class="form-group">
+          <button type="button" class="custom-file-button btn btn-small">Choose Files</button>
+          <input type="file" name="files" multiple accept="image/*,.pdf,.txt,.zip,.img,.svg,.stl,.obj,.kicad_pcb" style="display: none;">
+          <div class="file-display"></div>
+        </div>
+        <button type="submit" class="btn">Post</button>
+      </form>
+    </div>
+    <div id="posts"></div>
+    <div class="pagination">
+      <button id="prev-page" class="btn btn-small">Previous</button>
+      <span id="page-info">Page 1 of 1</span>
+      <button id="next-page" class="btn btn-small">Next</button>
+    </div>
+  </div>
+  
+  <!-- Text File Reader Sidebar -->
+  <div id="sidebar" class="sidebar">
+    <div id="sidebar-handle" class="sidebar-handle">
+      <div class="handle-grip"></div>
+    </div>
+    <div class="sidebar-header">
+      <h2>File Viewer</h2>
+      <button id="close-sidebar" class="btn btn-small btn-danger">✕</button>
+    </div>
+    <div id="file-content" class="file-content"></div>
+    <div id="model-container" style="display:none; width:100%; height:100%;"></div>
+  </div>
+</body>
+</html>
